@@ -1,0 +1,4 @@
+Bootstrap 5.3.6 — copyright 2011-2025 The Bootstrap Authors — Licence MIT
+Source: https://github.com/twbs/bootstrap
+Documentation: https://getbootstrap.com/docs/5.3/
+Fichiers CSS et JS de distribution, copies locales provenant de l’installation Bootstrap livrée dans l’environnement de génération.

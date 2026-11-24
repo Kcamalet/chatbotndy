@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(pageTitle, pageContent)">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d45">
+  <meta name="description" content="NDY AI, l'espace de conversation intelligent du projet BTS SIO SLAM.">
+  <title th:text="${pageTitle} + ' · NDY AI'">NDY AI</title>
+  <link rel="icon" type="image/png" th:href="@{/img/ndy-ai-icon.png}" href="/img/ndy-ai-icon.png">
+  <!-- Bibliothèques installées localement : pas de connexion internet requise -->
+  <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/ndy.css}" href="/css/ndy.css">
+</head>
+<body>
+  <div th:replace="~{fragments/header :: header}"></div>
+  <th:block th:replace="${pageContent}"></th:block>
+  <div th:replace="~{fragments/footer :: footer}"></div>
+  <script defer th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer th:src="@{/js/ndy.js}" src="/js/ndy.js"></script>
+</body>
+</html>

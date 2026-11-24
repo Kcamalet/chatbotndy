@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('Accueil', ~{::main})}">
+<head><title>Accueil NDY AI</title></head>
+<body>
+<main class="ndy-home" id="contenu">
+  <section class="container ndy-hero" aria-labelledby="hero-title">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Votre assistant IA nouvelle génération</span>
+        <h1 id="hero-title">Bienvenue sur <span class="text-blue">NDY</span> <span class="text-red">AI</span></h1>
+        <p class="hero-copy">Un espace de conversation simple, clair et intelligent. Explorez les possibilités des modèles d'intelligence artificielle dans une même interface.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a class="btn btn-ndy-primary btn-lg" th:href="@{/connexion}" href="/connexion">Commencer <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ndy-soft btn-lg" href="#apercu">Voir l'interface</a>
+        </div>
+        <div class="trust-row"><span class="trust-check" aria-hidden="true">✓</span> Interface claire <span class="trust-separator">·</span> Plusieurs modèles prévus <span class="trust-separator">·</span> Projet BTS SIO</div>
+      </div>
+      <div class="col-lg-6" id="apercu">
+        <div class="chat-demo" aria-label="Aperçu du chatbot NDY AI">
+          <div class="chat-demo-top"><div class="chat-demo-avatar"><img th:src="@{/img/ndy-ai-icon.png}" src="/img/ndy-ai-icon.png" alt="" width="36" height="36"></div><div><strong>NDY AI</strong><small>Assistant conversationnel</small></div><span class="chat-online">Aperçu</span></div>
+          <div class="chat-demo-body">
+            <div class="demo-chip">Conversation de démonstration</div>
+            <div class="demo-message user">Bonjour ! À quoi sert NDY AI ?</div>
+            <div class="demo-answer"><span class="demo-spark" aria-hidden="true">✦</span><div><strong>Bonjour !</strong><p>NDY AI est un futur chatbot qui permettra de discuter avec différents modèles d'intelligence artificielle et de retrouver ses conversations.</p><div class="demo-answer-tags"><span>Messages</span><span>Historique</span><span>Modèles IA</span></div></div></div>
+          </div>
+          <div class="chat-demo-compose"><span>Posez votre question à NDY AI...</span><span class="send-circle" aria-hidden="true">➤</span></div>
+          <div class="demo-caption">Aperçu visuel uniquement · Aucune requête API envoyée</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="features-section" aria-labelledby="features-title">
+    <div class="container">
+      <div class="features-heading"><p class="small-title">FONCTIONNALITÉS PRÉVUES</p><h2 id="features-title">Tout pour une expérience fluide</h2><p>Les principales fonctionnalités définies dans le cahier des charges.</p></div>
+      <div class="row g-4">
+        <div class="col-md-4"><article class="feature-card h-100"><div class="feature-icon feature-blue" aria-hidden="true">◈</div><h3>Plusieurs modèles d'IA</h3><p>Choisir un modèle lors de la création d'une conversation, puis le conserver durant les échanges.</p></article></div>
+        <div class="col-md-4"><article class="feature-card h-100"><div class="feature-icon feature-red" aria-hidden="true">☷</div><h3>Historique des échanges</h3><p>Retrouver les conversations et consulter les messages enregistrés dans la base de données.</p></article></div>
+        <div class="col-md-4"><article class="feature-card h-100"><div class="feature-icon feature-blue" aria-hidden="true">✧</div><h3>Réponses lisibles</h3><p>Afficher correctement le texte structuré et le Markdown tout en prévoyant une protection XSS.</p></article></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

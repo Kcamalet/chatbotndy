@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('Connexion', ~{::main})}">
+<head><title>Connexion NDY AI</title></head>
+<body>
+<main class="login-main" id="contenu">
+  <div class="container login-shell">
+    <div class="row g-0 login-card">
+      <div class="col-lg-5 login-showcase">
+        <div class="showcase-decoration decoration-a"></div><div class="showcase-decoration decoration-b"></div>
+        <div class="showcase-inner">
+          <span class="showcase-tag">ESPACE PERSONNEL</span>
+          <img class="showcase-logo" th:src="@{/img/ndy-ai-icon.png}" src="/img/ndy-ai-icon.png" alt="Logo NDY AI" width="110" height="110">
+          <h1>Bienvenue sur <span>NDY AI</span></h1>
+          <p>Un espace pour imaginer, apprendre et discuter avec les intelligences artificielles de demain.</p>
+          <div class="showcase-pills"><span>Simple</span><span>Intelligent</span><span>Évolutif</span></div>
+        </div>
+      </div>
+      <div class="col-lg-7 login-panel">
+        <div class="login-form-wrap">
+          <p class="small-title">CONNEXION</p>
+          <h2>Heureux de vous retrouver</h2>
+          <p class="login-subtitle">Connectez-vous pour accéder à votre espace de conversation.</p>
+          <div class="alert alert-info ndy-alert d-flex align-items-start" role="status"><span class="alert-symbol" aria-hidden="true">ⓘ</span><span>Page de démonstration : la connexion sera activée lors d'un prochain sprint.</span></div>
+          <form id="ndy-login-form" novalidate>
+            <div class="mb-4"><label for="ndy-email" class="form-label">Adresse e-mail</label><input id="ndy-email" name="email" type="email" class="form-control form-control-lg" autocomplete="email" placeholder="exemple@lycee.fr"></div>
+            <div class="mb-3"><label for="ndy-password" class="form-label">Mot de passe</label><div class="input-group"><input id="ndy-password" name="password" type="password" class="form-control form-control-lg" autocomplete="current-password" placeholder="••••••••"><button class="btn btn-show-password" type="button" id="ndy-toggle-password" aria-controls="ndy-password" aria-label="Afficher le mot de passe">Afficher</button></div></div>
+            <div class="d-flex justify-content-between align-items-center form-helper"><span><input class="form-check-input me-2" type="checkbox" id="remember"><label class="form-check-label" for="remember">Se souvenir de moi</label></span><span class="muted-link">Mot de passe oublié ?</span></div>
+            <button class="btn btn-ndy-primary btn-lg w-100 mt-4" type="submit">Se connecter <span aria-hidden="true">→</span></button>
+            <p id="ndy-login-feedback" class="demo-feedback" role="status" aria-live="polite"></p>
+          </form>
+          <p class="login-bottom">Vous n'avez pas encore de compte ? <span>Inscription prévue prochainement</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

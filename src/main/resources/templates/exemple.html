@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout('Exemple de page', ~{::main})}">
+<head><title>Exemple</title></head>
+<body>
+<main class="container example-content" id="contenu">
+  <p class="small-title">MODÈLE DE PAGE</p>
+  <h1>Exemple de template</h1>
+  <p>Duplique ce fichier pour créer une nouvelle page. Il réutilise automatiquement le header, le footer, Bootstrap et le CSS NDY AI via base.html.</p>
+  <a class="btn btn-ndy-primary" th:href="@{/}" href="/">Retour à l'accueil</a>
+</main>
+</body>
+</html>

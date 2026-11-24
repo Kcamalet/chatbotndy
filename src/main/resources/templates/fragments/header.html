@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+  <header th:fragment="header" class="ndy-header">
+    <nav class="container-fluid ndy-nav" aria-label="Navigation principale">
+      <a class="brand" th:href="@{/}" href="/" aria-label="NDY AI - Accueil">
+        <span class="brand-mark"><img th:src="@{/img/ndy-ai-icon.png}" src="/img/ndy-ai-icon.png" alt="" width="39" height="39"></span>
+        <span>NDY <span class="brand-ai">AI</span></span>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link-custom" th:href="@{/}" href="/">Accueil</a>
+        <span class="stage-pill d-none d-sm-inline-flex">Sprint 1 · Démonstration</span>
+        <a class="btn btn-ndy-outline btn-sm" th:href="@{/connexion}" href="/connexion">Se connecter</a>
+      </div>
+    </nav>
+  </header>
+</body>
+</html>

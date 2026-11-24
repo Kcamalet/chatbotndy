@@ -1,18 +1,31 @@
 <!doctype html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <body>
-  <header th:fragment="header" class="ndy-header">
+<th:block th:fragment="header">
+  <header class="ndy-header">
     <nav class="container-fluid ndy-nav" aria-label="Navigation principale">
-      <a class="brand" th:href="@{/}" href="/" aria-label="NDY AI - Accueil">
+      <a class="brand" th:href="@{/}" href="/" aria-label="NDY AI - Chatbot">
         <span class="brand-mark"><img th:src="@{/img/ndy-ai-icon.png}" src="/img/ndy-ai-icon.png" alt="" width="39" height="39"></span>
         <span>NDY <span class="brand-ai">AI</span></span>
       </a>
       <div class="nav-actions">
-        <a class="nav-link-custom" th:href="@{/}" href="/">Accueil</a>
-        <span class="stage-pill d-none d-sm-inline-flex">Sprint 1 · Démonstration</span>
+        <a class="nav-link-custom" th:href="@{/}" href="/">Chatbot</a>
+        <a class="nav-link-custom" th:href="@{/presentation}" href="/presentation">Présentation</a>
         <a class="btn btn-ndy-outline btn-sm" th:href="@{/connexion}" href="/connexion">Se connecter</a>
       </div>
     </nav>
   </header>
+  <!-- Affiché sur les pages du chatbot, contenant la variable conversations -->
+  <aside class="ndy-chat-sidebar" th:if="${conversations != null}" aria-label="Historique des conversations">
+    <a class="btn btn-ndy-primary w-100" th:href="@{/}" href="/">+ Nouvelle conversation</a>
+    <h2 class="sidebar-heading">Historique</h2>
+    <nav class="sidebar-history" aria-label="Anciennes conversations">
+      <a th:each="c : ${conversations}" th:href="@{/conversations/{id}(id=${c.id})}"
+         th:text="${c.titre}" th:classappend="${conversation != null and conversation.id == c.id} ? ' active' : ''"
+         href="#" class="sidebar-conversation">Conversation</a>
+      <p th:if="${#lists.isEmpty(conversations)}" class="sidebar-empty">Aucune conversation pour l'instant.</p>
+    </nav>
+  </aside>
+</th:block>
 </body>
 </html>

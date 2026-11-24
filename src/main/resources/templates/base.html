@@ -16,6 +16,11 @@
   <th:block th:replace="${pageContent}"></th:block>
   <div th:replace="~{fragments/footer :: footer}"></div>
   <script defer th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Markdown affiché seulement après assainissement DOMPurify.
+       Chargement CDN ; si les bibliothèques sont inaccessibles,
+       le texte reste affiché en toute sécurité par th:text. -->
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
   <script defer th:src="@{/js/ndy.js}" src="/js/ndy.js"></script>
 </body>
 </html>

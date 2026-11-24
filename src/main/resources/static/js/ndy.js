@@ -19,3 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+/* S2 : Markdown -> HTML assaini. Ne jamais insérer le HTML brut de l'IA. */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.markdown-content.assistant-message').forEach(element => {
+    // Si scripts CDN bloqués, th:text garde un affichage texte sans XSS.
+    if (!window.marked || !window.DOMPurify) return;
+    const rawMarkdown = element.textContent || '';
+    try {
+      const unsafeHtml = window.marked.parse(rawMarkdown, { breaks: true });
+      const safeHtml = window.DOMPurify.sanitize(unsafeHtml, { USE_PROFILES: { html: true } });
+      element.innerHTML = safeHtml;
+      element.classList.add('markdown-rendered');
+      // Les liens externes ne doivent pas pouvoir accéder à window.opener.
+      element.querySelectorAll('a[href]').forEach(link => {
+        link.setAttribute('rel', 'noopener noreferrer nofollow');
+      });
+    } catch (_) { /* Reste en texte échappé. */ }
+  });
+});

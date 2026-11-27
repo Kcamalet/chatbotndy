@@ -1,5 +1,11 @@
 package org.ldv.chatbotndy.config
 
+
+import org.ldv.chatbotndy.model.entity.Utilisateur
+import org.ldv.chatbotndy.model.entity.Role
+import org.ldv.chatbotndy.model.dao.RoleDAO
+import org.ldv.chatbotndy.model.dao.UtilisateurDAO
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.ldv.chatbotndy.model.dao.FourniseurIADAO
 import org.ldv.chatbotndy.model.dao.ModeleIADAO
 import org.ldv.chatbotndy.model.entity.FourniseurIA
@@ -17,10 +23,47 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class DataInitializer(
     private val fourniseurIADAO: FourniseurIADAO,
-    private val modeleIADAO: ModeleIADAO
+    private val modeleIADAO: ModeleIADAO,
+    private val roleDAO: RoleDAO,
+    private val utilisateurDAO: UtilisateurDAO,
+    private val passwordEncoder: PasswordEncoder
 ) {
     @Bean
     fun initData(): CommandLineRunner = CommandLineRunner {
+        // Les rôles
+        val roles = roleDAO.findAll()
+        if (roles.isEmpty()) {
+            roleDAO.save(Role(nom = "Utilisateur", nomLogique ="ROLE_USER" ))
+            roleDAO.save(Role(nom = "Administrateur", nomLogique ="ROLE_ADMIN"))
+        }
+        val roleAdmin = roleDAO.findAll().first { it.nomLogique == "ROLE_ADMIN" }
+        val roleUser = roleDAO.findAll().first { it.nomLogique == "ROLE_USER" }
+
+// Les utilisateurs
+        val utilisateurs = utilisateurDAO.findAll()
+        if (utilisateurs.isEmpty()) {
+            utilisateurDAO.save(
+                Utilisateur(
+                    prenom = "Kylian",
+                    nom = "Camalet",
+                    email = "kyliancamalet01@gmail.com",
+                    motDePasse = passwordEncoder.encode("admin123"),
+                    role = roleAdmin
+                )
+            )
+            utilisateurDAO.save(
+                Utilisateur(
+                    nom = "Prane",
+                    prenom = "Doli",
+                    email = "doli.prane@email.com",
+                    motDePasse = passwordEncoder.encode("user123"),
+                    role = roleUser)
+            )
+        }
+
+
+
+
         val mistral = fourniseurIADAO.findAll()
             .firstOrNull { it.nom == "Mistral" }
             ?: fourniseurIADAO.save(

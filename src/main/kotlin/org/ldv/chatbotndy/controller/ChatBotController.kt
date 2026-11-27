@@ -9,7 +9,7 @@ class ChatBotController {
     @GetMapping("/presentation")
     fun presentation(): String = "utilisateur/accueil"
 
-    @GetMapping("/connexion")
+    @GetMapping("/connexion", "/login")
     fun connexion(): String = "auth/connexion"
 
     @GetMapping("/exemple")
